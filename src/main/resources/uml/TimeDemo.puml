@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+actor Actor
+boundary Boundary
+control Control
+entity Entity
+database Database
+collections Collections
+autonumber 1.1
+'第一个流程
+activate Alice
+activate Bob
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+==Foo==
+autonumber stop
+
+autonumber 2.1
+
+Alice -> Bob: Another authentication Request
+Bob -> Control: 测试
+activate Control
+Alice <-- Control: another authentication Response
+
+deactivate Alice
+deactivate Bob
+
+@enduml
