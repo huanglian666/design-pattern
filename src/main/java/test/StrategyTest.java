@@ -15,7 +15,7 @@ import java.util.Objects;
  * @Author huanglian <br/>
  * Create Time:2024/4/23 09:27 <br/>
  */
-public class MyTest {
+public class StrategyTest {
     public static void main(String[] args) {
         Dog[] dogs = (Dog[]) Arrays.asList(
                 new Dog(0), new Dog(2), new Dog(1)
