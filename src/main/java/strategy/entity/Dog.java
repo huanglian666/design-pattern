@@ -1,4 +1,6 @@
-package service;
+package strategy.entity;
+
+import lombok.*;
 
 /**
  * Title: <br/>
@@ -8,8 +10,14 @@ package service;
  * Project: design-pattern <br/>
  *
  * @Author huanglian <br/>
- * Create Time:2024/4/23 09:17 <br/>
+ * Create Time:2024/4/23 09:27 <br/>
  */
-public interface Compare<T> {
-    int compareTo(T o1, T o2);
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
+public class Dog {
+    private int age;
 }

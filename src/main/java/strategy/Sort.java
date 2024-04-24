@@ -1,8 +1,8 @@
-package test;
+package strategy;
 
 import com.sun.istack.internal.NotNull;
 import com.sun.tools.javac.util.Assert;
-import service.Compare;
+import strategy.service.Compare;
 
 /**
  * Title: <br/>

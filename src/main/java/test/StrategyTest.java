@@ -1,6 +1,7 @@
 package test;
 
-import entity.Dog;
+import strategy.Sort;
+import strategy.entity.Dog;
 
 import java.util.Arrays;
 import java.util.Objects;
