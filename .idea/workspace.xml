@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a8abd20-5697-4b70-9fa9-2c5f4bd5c3c4" name="Default Changelist" comment="装饰器模式">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/uml/TimeDemo.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/uml/TimeDemo.puml" afterDir="false" />
-    </list>
+    <list default="true" id="0a8abd20-5697-4b70-9fa9-2c5f4bd5c3c4" name="Default Changelist" comment="装饰器模式" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +139,7 @@
       <workItem from="1713839715504" duration="4934000" />
       <workItem from="1713920782698" duration="2958000" />
       <workItem from="1713926610618" duration="237000" />
-      <workItem from="1714287544596" duration="338000" />
+      <workItem from="1714287544596" duration="855000" />
     </task>
     <task id="LOCAL-00001" summary="提交.gitignore文件">
       <created>1713836695558</created>
