@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+title KBA 新建知识库
+autonumber 1.1
+activate KBA
+KBA -> Web: 填写表单，设置好知识库基础表单[名称、内存、访问权限]
+activate Web
+control KBLM
+Web -> KBLM: 发送请求
+activate KBLM
+KBLM -> Web: 新建知识库成功
+deactivate KBLM
+Web -> KBA: 提示操作成功
+deactivate Web
+
+
+newpage KBA 上传知识库源文档
+autonumber 2.1
+KBA -> Web: 进入知识库上传界面
+activate Web
+Web -> Web: 切换到知识库上传页面
+KBA -> Web: 选择带上传的知识库，上传本地文件
+Web -> KBLM: 携带用户数据和文件请求
+activate KBLM
+KBLM -> KBLM: 进行一系列的复杂操作输入模型
+KBLM -> Web: 上传且构建成功
+deactivate KBLM
+Web -> KBA: 提示用户操作结果
+deactivate KBA
+@enduml
