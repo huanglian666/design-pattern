@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+title KBU 使用KBLM 流程
+autonumber
+activate KBU
+KBU -> Web: 访问前台地址
+activate Web
+Web -> KBU: 渲染聊天界面
+
+KBU -> Web: 选择查询的知识领域（#知识库）输入查询问题
+control KBLM
+Web -> KBLM: 携带用户输入参数请求
+activate KBLM
+KBLM -> KBLM: 进行一系列\n复杂操作组装答案
+KBLM -> Web: 返回答案，并且标注其中的引用
+deactivate KBLM
+Web -> KBU: 渲染数据显示个KBU看
+deactivate Web
+deactivate KBU
+@enduml
