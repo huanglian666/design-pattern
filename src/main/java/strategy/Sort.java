@@ -1,7 +1,6 @@
 package strategy;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.tools.javac.util.Assert;
+import cn.hutool.core.lang.Assert;
 import strategy.service.Compare;
 
 /**
@@ -15,9 +14,9 @@ import strategy.service.Compare;
  * Create Time:2024/4/23 09:19 <br/>
  */
 public class Sort<T> {
-    public void sort(@NotNull T[] arr, @NotNull Compare<T> compare) {
-        Assert.checkNonNull(arr, "排序数组不能为空");
-        Assert.checkNonNull(compare, "排序规则不能为空");
+    public void sort(T[] arr, Compare<T> compare) {
+        Assert.noNullElements(arr, "需要排序的数组不能为空");
+        Assert.notNull(compare, "排序规则不能为空");
         for (int i = 0; i < arr.length - 1; i++) {
             int j = i + 1;
             if (compare.compareTo(arr[i], arr[j]) == -1) {
