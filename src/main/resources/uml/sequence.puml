@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+'Alice -> Bob: Authentication Request
+'Bob --> Alice: Authentication Response
+'
+'Alice -> Bob: Another authentication Request
+'Alice <-- Bob: another authentication Response
+actor 用户
+autonumber 1.1
+用户 -> 前端:选中商品规格点击立即购买
+前端 -> 后端:传参规格对象集合及支付方式调用预下单接口
+后端 -->前端:加载预下单接口返回完整订单信息、返回收货地址、(返回自提地址)
+前端 -->用户:跳转订单确认页面,展示地址及订单详细信息(商家,规格,费用明细等),使用积分及优惠券调用调用价格计算及优惠券列表
+autonumber 2.1
+用户 -> 前端:点击确认订单
+前端 -> 后端:传参商品关联的商家信息集合,预下单单号,买家地址id,traceId等调用订单创建接口,支付配置接口
+后端 -->前端:返回生成的平台订单号及需要支付的金额。返回可以可用支付方式及当前用户平台余额
+前端 -->用户:跳转支付页面
+autonumber 3.1
+用户 -> 前端:点击立刻支付
+前端 -> 后端:传参平台订单号,支付类型调支付接口。传参平台订单号调订单详情接口
+后端 -->前端:返回支付结果,订单号,支付渠道,支付类型。返回完整订单信息。
+前端 -->用户:跳转支付结果页面,展示支付结果及订单信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
+
+
+
+
+
+
