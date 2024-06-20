@@ -1,5 +1,6 @@
 package test;
 
+import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
@@ -14,8 +15,8 @@ public class EasyExcelTest {
         String fileName = "test1.xlsx";
         List<DemoData> data = new ArrayList<>();
         // 添加数据
-        data.add(new DemoData("张三", 20));
-        data.add(new DemoData("李四", 25));
+        data.add(new DemoData("张三aaaaa", 20));
+        data.add(new DemoData("李四bbbbbb", 25));
 
         FileOutputStream out = new FileOutputStream(fileName);
 
@@ -26,6 +27,11 @@ public class EasyExcelTest {
 
         excelWriter.write(data, writeSheet);
 
+        excelWriter.finish();
+
+
+
         System.out.println("Excel文件生成完毕");
+
     }
 }
