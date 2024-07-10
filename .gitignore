@@ -2,6 +2,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/target/
 
+### 测试git同步流程
 ### IntelliJ IDEA ###
 .idea
 *.iws
