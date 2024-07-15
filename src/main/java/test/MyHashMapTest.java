@@ -14,12 +14,16 @@ import algorithm.MyHashMap;
  */
 public class MyHashMapTest {
     public static void main(String[] args) {
-        MyHashMap<String, String> map = new MyHashMap<>();
+        MyHashMap<String, String> map = new MyHashMap<>(32);
         map.put("foo", "bar");
         map.put("bar", "baz");
         map.put("bar", "newBar");
         map.put("aa", "bb");
 
         System.out.println(map.get("bar"));
+
+        System.out.println(map.remove("foo"));
+
+        System.out.println(map.remove("foo"));
     }
 }

@@ -37,6 +37,38 @@ public class MyHashMap<K, V> {
         return key.hashCode() & (size - 1);
     }
 
+    public K remove(K key) {
+        int index = hash(key);
+        Entry<K, V> entry = table[index];
+        if (entry == null) {
+            return null;
+        } else {
+
+            if (entry.key == key) {
+                table[index] = entry.next;
+                return entry.key;
+            }
+
+            Entry<K, V> previous = entry;
+            entry = entry.next;
+
+            while (entry != null && entry.next != null) {
+                if (entry.key == key) {
+                    previous.next = entry.next;
+                    entry.next = null;
+                    return entry.key;
+                }
+
+                previous = entry;
+                entry = entry.next;
+            }
+
+
+
+        }
+        return null;
+    }
+
     public V get(K key) {
         Entry<K, V> entry = table[hash(key)];
         if (entry == null) {
