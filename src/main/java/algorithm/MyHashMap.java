@@ -37,11 +37,30 @@ public class MyHashMap<K, V> {
         return key.hashCode() & (size - 1);
     }
 
-    public void put(K key, V value) {
+    public V get(K key) {
         Entry<K, V> entry = table[hash(key)];
+        if (entry == null) {
+            return null;
+        } else {
+            while (entry.next != null) {
+                if (entry.key == key) {
+                    return entry.value;
+                }
+                entry = entry.next;
+            }
+            if (entry.key == key) {
+                return entry.value;
+            }
+        }
+        return null;
+    }
+
+    public void put(K key, V value) {
+        int index = hash(key);
+        Entry<K, V> entry = table[index];
 
         if (entry == null) {
-            entry = new Entry<>(key, value);
+            table[index] = new Entry<>(key, value);
         }
         else {
             while (entry.next != null) {
