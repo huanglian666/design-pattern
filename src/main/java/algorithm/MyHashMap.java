@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.StringJoiner;
+import java.util.function.BiConsumer;
+
 /**
  * Title: <br/>
  * Description: <br/>
@@ -37,6 +40,27 @@ public class MyHashMap<K, V> {
         return key.hashCode() & (size - 1);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        StringJoiner joiner = new StringJoiner(",");
+        this.forEach((k, v) -> joiner.add("\"" + k + "\":\"" + v + "\""));
+        sb.append(joiner).append("}");
+        return sb.toString();
+    }
+
+    public void forEach(BiConsumer<K, V> consumer) {
+        for (Entry<K, V> entry : table) {
+            if (entry != null) {
+                while (entry.next != null) {
+                    consumer.accept(entry.key, entry.value);
+                    entry = entry.next;
+                }
+                consumer.accept(entry.key, entry.value);
+            }
+        }
+    }
+
     public K remove(K key) {
         int index = hash(key);
         Entry<K, V> entry = table[index];
@@ -61,6 +85,11 @@ public class MyHashMap<K, V> {
 
                 previous = entry;
                 entry = entry.next;
+            }
+
+            if (entry != null && entry.key == key) {
+                previous.next = null;
+                return entry.key;
             }
 
 
