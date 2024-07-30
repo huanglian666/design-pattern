@@ -3,18 +3,31 @@
 title KBU 使用KBLM 流程
 autonumber
 activate KBU
-KBU -> Web: 访问前台地址
+KBU -> Web: 通过工作台，跳转到知识共享中心首页
 activate Web
-Web -> KBU: 渲染聊天界面
-
-KBU -> Web: 选择查询的知识领域（#知识库）输入查询问题
+Web -> KBU: 渲染界面
+deactivate KBU
+KBU -> Web: 搜索框输入查询关键字，勾选查询方式，和查询范围
+activate KBU
 control KBLM
-Web -> KBLM: 携带用户输入参数请求
+Web -> Web: 页面实时变化渲染用户输入和勾选内容
+KBU -> Web: 点击搜索按钮
+
+Web -> KBLM: 携带用户构造的筛选数据请求服务端
 activate KBLM
-KBLM -> KBLM: 进行一系列\n复杂操作组装答案
-KBLM -> Web: 返回答案，并且标注其中的引用
+KBLM -> KBLM: 进行一系列\n复杂操作匹配筛选条件
+KBLM -> Web: 返回答案
 deactivate KBLM
-Web -> KBU: 渲染数据显示个KBU看
+Web -> KBU: 渲染检索结果数据
+deactivate Web
+deactivate KBU
+
+KBU -> Web: 点击检索出来的文件名
+activate KBU
+activate Web
+Web -> Web: 渲染对应的文件在线预览图片
+KBU -> Web: 用户根据预览结果判断是否采用
+KBU -> Web: 如果需要采用点击下载按钮下载原始文件
 deactivate Web
 deactivate KBU
 @enduml
