@@ -1,30 +1,60 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-title KBA 新建知识库
+title KBA 配置知识共享中心
 autonumber 1.1
 activate KBA
-KBA -> Web: 填写表单，设置好知识库基础表单[名称、内存、访问权限]
+KBA -> Web: 点击首页的文件夹图标，进入后台管理界面，进入配置管理
 activate Web
 control KBLM
-Web -> KBLM: 发送请求
+Web -> KBLM: 前段页面上编辑好，用户行为控制及其文档属性，发送请求
 activate KBLM
-KBLM -> Web: 新建知识库成功
+KBLM -> KBLM: 将用户配置的数据同步到持久层
+KBLM -> Web: 提示操作成功
 deactivate KBLM
-Web -> KBA: 提示操作成功
+Web -> KBA: 渲染数据展示给管理员
 deactivate Web
+deactivate KBA
 
 
 newpage KBA 上传知识库源文档
 autonumber 2.1
-KBA -> Web: 进入知识库上传界面
+KBA -> Web: 点击文件管理，选中旗下「文件夹」子菜单
 activate Web
-Web -> Web: 切换到知识库上传页面
-KBA -> Web: 选择带上传的知识库，上传本地文件
-Web -> KBLM: 携带用户数据和文件请求
-activate KBLM
-KBLM -> KBLM: 进行一系列的复杂操作输入模型
-KBLM -> Web: 上传且构建成功
-deactivate KBLM
-Web -> KBA: 提示用户操作结果
+activate KBA
+Web -> KBA: 路由到对应的页面
+deactivate Web
 deactivate KBA
+
+KBA -> Web: 点击上传按钮
+activate Web
+activate KBA
+Web -> Web: 弹出文件上传对话框
+KBA -> Web: 用户在此对话框中选择需要上传的文件
+deactivate KBA
+
+Web -> Web: 在页面上保存用户上传数据
+Web -> KBLM: 发送请求，将页面上保存的用户数据发送到服务端
+activate KBLM
+KBLM -> KBLM: 保存用户上传的文件，并且制作好对应的预览文件
+KBLM -> Web: 提示上传成功
+deactivate KBLM
+deactivate Web
+
+activate KBA
+KBA -> Web: 点击上传成功文件列表数据行中的对应的编辑按钮
+activate Web
+Web -> Web: 弹出文件编辑框
+KBA -> Web: 配置好刚才上传文件的基础属性
+Web -> KBLM: 发送请求，将用户配置的信息发送到服务端
+
+activate KBLM
+KBLM -> KBLM: 同步用户修改数据到知识共享中心的持久层
+KBLM -> Web: 返回操作成功
+deactivate KBLM
+Web -> KBA: 渲染界面提示用户
+
+deactivate Web
+deactivate KBA
+
+
 @enduml
