@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+activate 用户
+用户 -> 玉衡: 用户登录玉衡平台
+activate 玉衡
+玉衡 -> 用户: 跳转到工作台
+用户 -> 玉衡: 用户配置个人专属工作台（常用应用、自定组件）
+玉衡 -> 用户: 渲染出用户自定义工作台
+用户 -> 玉衡: 检阅自己相关的工作内容，通过工作台的入口跳转
+玉衡 -> 应用: 跳转到用户选择的具体的应用中
+deactivate 玉衡
+
+
+@enduml
