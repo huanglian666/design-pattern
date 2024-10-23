@@ -20,11 +20,11 @@ public class MyHashMapTest {
         map.put("bar", "newBar");
         map.put("aa", "bb");
 
-//        System.out.println(map.get("bar"));
-//
-//        System.out.println(map.remove("foo"));
-//
-//        System.out.println(map.remove("foo"));
+        System.out.println(map.get("bar"));
+
+        System.out.println(map.remove("foo"));
+
+        System.out.println(map.remove("foo"));
 
         map.forEach((k, v) -> System.out.println("key: " + k + ",value: " + v));
 
