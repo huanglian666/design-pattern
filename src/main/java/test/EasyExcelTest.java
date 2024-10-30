@@ -1,10 +1,11 @@
 package test;
 
-import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import test.entity.DemoData;
+import test.entity.TestSseEventBuilderImpl;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ import java.util.List;
 
 public class EasyExcelTest {
     public static void main(String[] args) throws Exception {
+        SseEmitter emitter = new SseEmitter();
+        emitter.send(new TestSseEventBuilderImpl().data("aaaa"));
         String fileName = "test1.xlsx";
         List<DemoData> data = new ArrayList<>();
         // 添加数据
@@ -34,4 +37,5 @@ public class EasyExcelTest {
         System.out.println("Excel文件生成完毕");
 
     }
+
 }
