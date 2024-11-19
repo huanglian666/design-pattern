@@ -28,7 +28,7 @@ import java.util.Collections;
 public class PassKeyController {
     private final RelyingParty relyingParty;
 
-    public PassKeyController(RelyingParty relyingParty) {
+    public PassKeyController() {
         this.relyingParty = RelyingParty.builder()
                 .identity(RelyingPartyIdentity.builder()
                         .id("example.com")
