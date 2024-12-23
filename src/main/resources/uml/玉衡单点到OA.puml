@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title 玉衡单点登录到OA
+autonumber
+
+玉衡工作台 -> OA匿名中间页: 用户点击工作台OA应用
+OA匿名中间页 -> 玉衡OAUTH: 通过注册应用的client_id和\n client_secret获取code
+玉衡OAUTH -> OA匿名中间页: 返回授权码「code」
+
+OA匿名中间页 -> OA后端: 携带code
+
+OA后端 -> 玉衡OAUTH: 通过code查询玉衡平台\n当前登录的用户信息
+
+玉衡OAUTH -> OA后端: 流程发起客户端中登录玉衡平台具体用户信息
+
+OA后端 -> OA匿名中间页: 流程发起客户端登录玉衡平台的用户名称
+
+OA匿名中间页 -> EKP: 请求/getLoginSessionId接口
+EKP -> OA匿名中间页: 当前会话id
+
+OA匿名中间页 -> EKP: /sys/authentication/sso/login_auto.jsp?sessionId={会话id}&target={OA的目标页面}
+@enduml
