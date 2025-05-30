@@ -29,6 +29,17 @@ public class RuleCheckTest {
                         .execGroup(1)
                         .build()
         );
+
+        testData.add(
+                RuleCheck.builder()
+                        .tranCode("1")
+                        .validRuleName("check2")
+                        .execSort(2)
+                        .isParallel(Boolean.FALSE)
+                        .execGroup(1)
+                        .build()
+        );
+
     }
 
     public static void main(String[] args) {

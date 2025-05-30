@@ -4,6 +4,7 @@ import cn.hutool.core.map.MapBuilder;
 import lombok.SneakyThrows;
 import org.springframework.util.Assert;
 import rule.check.Check1;
+import rule.check.Check2;
 import rule.check.CheckRuleInterface;
 import rule.dto.RuleCheck;
 
@@ -25,6 +26,7 @@ public class CheckExecute {
     public final static Map<String, CheckRuleInterface> execBeans =
             MapBuilder.<String, CheckRuleInterface>create()
                     .put("check1", new Check1())
+                    .put("check2", new Check2())
                     .build();
     /**
      * 串行专用线程
@@ -79,6 +81,7 @@ public class CheckExecute {
                 groupByExec.getOrDefault(Boolean.FALSE, Collections.emptyList()).forEach(item -> {
                     try {
                         CheckRuleInterface checkRule = execBeans.get(item.getValidRuleName());
+                        System.out.println(item.getValidRuleName());
                         Assert.notNull(
                                 checkRule, String.format("没有找到[%s]对应的执行规则", item.getValidRuleName())
                         );
