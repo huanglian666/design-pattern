@@ -1,5 +1,7 @@
 package rule.check;
 
+import rule.exception.RuleException;
+
 import java.util.Map;
 
 /**
@@ -17,5 +19,6 @@ public class Check1 implements CheckRuleInterface {
     @Override
     public void check(Map<String, Object> param) {
         System.out.println("执行了check1");
+        throw new RuleException("check1","check1异常");
     }
 }

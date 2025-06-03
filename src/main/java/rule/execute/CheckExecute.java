@@ -7,6 +7,7 @@ import rule.check.Check1;
 import rule.check.Check2;
 import rule.check.CheckRuleInterface;
 import rule.dto.RuleCheck;
+import rule.exception.RuleException;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -69,7 +70,11 @@ public class CheckExecute {
                     );
                     checkRule.check(params);
                 } catch (Exception e) {
-                    errorList.add(e.getMessage());
+                    String msg= e.getMessage();
+                    if (e instanceof RuleException){
+                        msg = String.format("[%s]提示:%s", ((RuleException) e).getRuleCode(), msg);
+                    }
+                    errorList.add(msg);
                 } finally {
                     // 确保计数减少
                     parallelLatch.countDown();
