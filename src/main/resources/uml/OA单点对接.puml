@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+玉衡工作台 -> 玉衡中间页面: 用户点击OA应用
+玉衡中间页面 -> 玉衡后端: 携带当前登录用户工号请求getLoginSessionId?userId={当前登录用户工号}
+玉衡后端 -> 玉衡后端: 当前登录用户工号转化为SN码
+玉衡后端 -> OA单点EKP: /getLoginSessionId?loginName={SN码}
+OA单点EKP -> 玉衡后端: sessionId(不是会话id，应该理解为OA系统中的tokenId)
+玉衡后端 -> 玉衡中间页面: 玉衡平台当前登录用户注册到 OA单点EKP的sessionId(tokenId)
+玉衡中间页面 -> OA单点EKP: 重定向到/sys/authentication/sso/lbgin_auto.jsp?sessionld={sessionId}&target={OA的目标页面}
+@enduml
